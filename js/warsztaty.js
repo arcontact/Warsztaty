@@ -76,7 +76,7 @@ function getNews() {
 	var _news = [];
 	var ajaxNews = $.ajax({
 		url: newsUrl,
-		type: "GET",
+		type: 'GET',
 		async: false,
 		cache: false
 	});
