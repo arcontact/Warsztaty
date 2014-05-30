@@ -113,7 +113,7 @@ function getNews() {
 				out = out + '</ul></div><div class="news"><ul data-ajax="false" data-inset="true">';
 			}
 			//var _date = new Date(Date.parse(item.date)).toLocaleDateString();
-			var _date = moment(item.date, 'dddd, Do MMM YYYY', 'pl');
+			var _date = moment(item.date).format('dddd, Do MMM YYYY');
 			out = out + '<li><a href="' +item.link+ '" data-ajax="false" rel="external"><h6>' + item.title + '</h6><span>' +_date+ '</span></a></li>';
 		});
 		out = out + '</div>';
