@@ -57,17 +57,34 @@ function sortByKey(array, key) {
 };
 
 function initNews() {
-	$.ajax({
-		type: "GET",
-		url: newsUrl
-	})
-	.done(function(out){
-		$('#articles').html(out);
-		console.log(out);
-	})
-	.error(function(xhr, err){
-		alert("Ajax error: " + err);
-	});
+	fileSystem.root.getFile("ic_data.xml", null, gotFileEntry, failNews);
+};
+
+function gotFileEntry(fileEntry) {
+	fileEntry.file(gotFile, failNews);
+};
+
+function gotFile(file){
+	readDataUrl(file);
+	readAsText(file);
+};
+
+function readDataUrl(file) {
+	var reader = new FileReader();
+	reader.onloadend = function(evt) {
+		console.log("Read as data URL");
+		console.log(evt.target.result);
+	};
+	reader.readAsDataURL(file);
+};
+
+function readAsText(file) {
+	var reader = new FileReader();
+	reader.onloadend = function(evt) {
+		console.log("Read as text");
+		console.log(evt.target.result);
+	};
+	reader.readAsText(file);
 };
 
 function failNews(err) {
@@ -422,8 +439,7 @@ $(document).on('pageshow pagechange',function(){
 	$(".ui-page-active [data-role=header]").fixedtoolbar({updatePagePadding:true});
 });
 $(document).on('pageshow','#page1',function(){
-	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, initNews, failNews);
-	initNews();
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, initNews, failNews);
 });
 $(document).on('pageshow','#page3',function(){
 	if(typeof GoogleMap != 'undefined'){
