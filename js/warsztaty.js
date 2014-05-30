@@ -507,6 +507,6 @@ $(document).ready(function(){
 	$('body').on('click', '[rel="external"]', function(e){
 		e.preventDefault();
 		var _el = $(this);
-		window.open(_el.attr('href'), '_blank', 'location=yes');
+		window.open(_el.attr('href'), '_system', 'location=yes');
 	});
 });
