@@ -57,7 +57,21 @@ function sortByKey(array, key) {
 };
 
 function initNews() {
-	fileSystem.root.getFile("ic_data.xml", null, gotFileEntry, failNews);
+	var entries = [];
+	
+	$.get(newsUrl, {}, function(res, code) {
+		var xml = $(res);
+		var items = xml.find("item");
+		$.each(items, function(i, v) {
+			entry = {
+				title: $(v).find("title").text(),
+				link: $(v).find("link").text(),
+				description: $.trim($(v).find("description").text())
+			};
+			entries.push(entry);
+		});
+	});
+	alert(entries);
 };
 
 function gotFileEntry(fileEntry) {
@@ -439,7 +453,8 @@ $(document).on('pageshow pagechange',function(){
 	$(".ui-page-active [data-role=header]").fixedtoolbar({updatePagePadding:true});
 });
 $(document).on('pageshow','#page1',function(){
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, initNews, failNews);
+	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, initNews, failNews);
+	initNews();
 });
 $(document).on('pageshow','#page3',function(){
 	if(typeof GoogleMap != 'undefined'){
