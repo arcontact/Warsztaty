@@ -57,7 +57,16 @@ function sortByKey(array, key) {
 };
 
 function initNews() {
-	alert(newsUrl);
+	$.ajax({
+		type: "GET",
+		url: newsUrl
+	})
+	.done(function(out){
+		alert("Data: " + out);
+	})
+	.error(function(xhr, err){
+		alert("Ajax error: " + err);
+	});
 };
 
 function failNews(err) {
@@ -412,7 +421,8 @@ $(document).on('pageshow pagechange',function(){
 	$(".ui-page-active [data-role=header]").fixedtoolbar({updatePagePadding:true});
 });
 $(document).on('pageshow','#page1',function(){
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, initNews, failNews);
+	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, initNews, failNews);
+	initNews();
 });
 $(document).on('pageshow','#page3',function(){
 	if(typeof GoogleMap != 'undefined'){
