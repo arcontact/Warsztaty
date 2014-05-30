@@ -1,3 +1,5 @@
+var newsUrl = 'http://www.q-service.com.pl/rss/';
+
 $.mobile.defaultPageTransition = 'none';
 
 $(window).load(function(){
@@ -55,7 +57,12 @@ function sortByKey(array, key) {
 };
 
 function initNews() {
-	alert(1);
+	var reader = new FileReader();
+	reader.onloadend = function (evt) {
+		console.log("read success");
+		console.log(evt.target.result);
+    };
+    reader.readAsDataURL(newsUrl);
 };
 
 function renderWarsztat(id){
