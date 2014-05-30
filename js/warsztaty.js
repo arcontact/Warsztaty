@@ -112,7 +112,7 @@ function getNews() {
 			if(i%per_page==0 && i!=0){
 				out = out + '</ul></div><div class="news"><ul data-ajax="false" data-inset="true">';
 			}
-			var _date = new Date(Date.parse(item.date)).toLocaleDateString();
+			var _date = new Date(Date.parse(item.date)).format("dd.mm.yy");
 			out = out + '<li><a href="' +item.link+ '" data-ajax="false" rel="external"><h6>' + item.title + '</h6><span>' +_date+ '</span></a></li>';
 		});
 		out = out + '</div>';
