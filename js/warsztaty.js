@@ -69,9 +69,9 @@ function initNews() {
 				description: $.trim($(v).find("description").text())
 			};
 			entries.push(entry);
+			console.log(entry);
 		});
 	});
-	alert(entries);
 };
 
 function gotFileEntry(fileEntry) {
