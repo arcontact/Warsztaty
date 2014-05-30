@@ -113,7 +113,7 @@ function getNews() {
 			if(i%per_page==0 && i!=0){
 				out = out + '</ul></div><div class="news"><ul data-ajax="false" data-inset="true">';
 			}
-			out = out + '<li><a href="#" data-ajax="false" onclick="window.open(\''+item.link+'\', \'_blank\', \'location=yes\');"><h6>' + item.title + '</h6><span>' +item.date+ '</span></a></li>';
+			out = out + '<li><a href="' +item.link+ '" data-ajax="false" rel="external"><h6>' + item.title + '</h6><span>' +item.date+ '</span></a></li>';
 		});
 		out = out + '</div>';
 		
@@ -482,7 +482,6 @@ $(document).on('pageshow pagechange',function(){
 	$(".ui-page-active [data-role=header]").fixedtoolbar({updatePagePadding:true});
 });
 $(document).on('pageshow','#page1',function(){
-	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, initNews, failNews);
 	initNews();
 });
 $(document).on('pageshow','#page3',function(){
@@ -503,5 +502,11 @@ $(document).ready(function(){
 		} else {
 			window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 		}
+	});
+	
+	$('body').on('click', '[rel="external"]', function(e){
+		e.preventDefault();
+		var _el = $(this);
+		window.open(_el.attr('href'), '_blank', 'location=yes');
 	});
 });
