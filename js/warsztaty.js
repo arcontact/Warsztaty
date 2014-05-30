@@ -57,12 +57,11 @@ function sortByKey(array, key) {
 };
 
 function initNews() {
-	var reader = new FileReader();
-	reader.onloadend = function (evt) {
-		console.log("read success");
-		console.log(evt.target.result);
-    };
-    reader.readAsDataURL(newsUrl);
+	alert(newsUrl);
+};
+
+function failNews(err) {
+	alert(err.code);
 };
 
 function renderWarsztat(id){
@@ -413,7 +412,7 @@ $(document).on('pageshow pagechange',function(){
 	$(".ui-page-active [data-role=header]").fixedtoolbar({updatePagePadding:true});
 });
 $(document).on('pageshow','#page1',function(){
-	initNews();
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, initNews, failNews);
 });
 $(document).on('pageshow','#page3',function(){
 	if(typeof GoogleMap != 'undefined'){
