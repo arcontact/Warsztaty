@@ -98,7 +98,7 @@ function getNews() {
 			$.each(items, function(i, v) {
 				entry = {
 					title: $(v).find("title").text(),
-					date: $(v).find("pubDate").text(),
+					date: convertDate($(v).find("pubDate").text()),
 					link: $(v).find("link").text(),
 					description: $.trim($(v).find("description").text())
 				};
