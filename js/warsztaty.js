@@ -58,18 +58,29 @@ function sortByKey(array, key) {
 
 function initNews() {
 	var entries = [];
+	$('#articles').addClass('loading');
 	
 	$.get(newsUrl, {}, function(res, code) {
+		$('#articles').removeClass('loading');
+		
 		var xml = $(res);
 		var items = xml.find("item");
-		$.each(items, function(i, v) {
+		
+		var list_block = $('<ul/>');
+		list_block.appendTo('#articles');
+		
+		$.each(items, function(i, v) {		
 			entry = {
 				title: $(v).find("title").text(),
 				link: $(v).find("link").text(),
 				description: $.trim($(v).find("description").text())
 			};
-			entries.push(entry);
-			console.log(entry);
+			
+			var list_item = $('<li/>');
+			list_item.text(entry.title);
+			list_item.appendTo(list_block);
+			//entries.push(entry);
+			//console.log(entry);
 		});
 	});
 };
