@@ -113,7 +113,7 @@ function getNews() {
 				out = out + '</ul></div><div class="news"><ul data-ajax="false" data-inset="true">';
 			}
 			var _date = new Date(Date.parse(item.date));
-			var months = Array("January", "February", "March", "April", "Maj", "June", "July", "August", "September", "October", "November", "December");
+			var months = Array("Stycznia", "Lutego", "Marca", "Kwietnia", "Maja", "Czerwca", "Lipca", "Sierpnia", "Września", "Października", "Listopada", "Grudnia");
 			var date_string = _date.getDate() + " " + months[_date.getMonth()] + " " + _date.getFullYear();
 			out = out + '<li><a href="' +item.link+ '" data-ajax="false" rel="external"><h6>' + item.title + '</h6><span>' +date_string+ '</span></a></li>';
 		});
