@@ -57,7 +57,7 @@ function sortByKey(array, key) {
 };
 
 function initNews() {
-	var entries = [];
+	var per_page = 20;
 	$('#articles').empty();
 	$('#articles').addClass('loading');
 	
@@ -78,12 +78,25 @@ function initNews() {
 			};
 			
 			var list_item = $('<li/>');
-			list_item.text(entry.title);
+			var list_item_link = $('</a>', { href: entry.link });
+			list_item_link.appendTo(list_item);
 			list_item.appendTo(list_block);
 			//entries.push(entry);
 			//console.log(entry);
 		});
 		$('#articles ul').listview();
+		
+		$('.articles_pagination').pagination('destroy').pagination({
+			items: items.length,
+			itemsOnPage: per_page,
+			cssStyle: 'light-theme',
+			prevText: '<',
+			nextText: '>',
+			edges: 1,
+			displayedPages: 3,
+			onPageClick: pageClick,
+			onInit: initNews
+		});
 	});
 };
 
