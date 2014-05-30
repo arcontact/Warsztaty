@@ -91,11 +91,9 @@ function getNews() {
 			list_block.appendTo('#articles');
 			
 			$.each(items, function(i, v) {
-				var data = new Date($(v).find("pubDate").text().toString());
-			
 				entry = {
 					title: $(v).find("title").text(),
-					date: data.toLocaleFormat('%d %b %Y'),
+					date: $(v).find("pubDate").text(),
 					link: $(v).find("link").text(),
 					description: $.trim($(v).find("description").text())
 				};
