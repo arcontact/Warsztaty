@@ -13,7 +13,7 @@ var use_warsztaty = [];
 var feedFromServer = false;
 
 function openDeviceBrowser(url){
-	window.open(encodeURI(url),'_system','location=no');
+	window.open(url,'_blank','location=yes');
 }
 function supports_html5_storage() {
   try {
@@ -112,7 +112,7 @@ function getNews() {
 			if(i%per_page==0 && i!=0){
 				out = out + '</ul></div><div class="news"><ul data-ajax="false" data-inset="true">';
 			}
-			out = out + '<li><a href="' +item.link+ '" data-ajax="false"><h6>' + item.title + '</h6><span>' +item.date+ '</span></a></li>';
+			out = out + '<li><a href="' +item.link+ '" data-ajax="false" data-rel="external"><h6>' + item.title + '</h6><span>' +item.date+ '</span></a></li>';
 		});
 		out = out + '</div>';
 		
@@ -502,5 +502,11 @@ $(document).ready(function(){
 		} else {
 			window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 		}
+	});
+	
+	$('[data-rel]').on('click', function(e){
+		e.preventDefault();
+		
+		openDeviceBrowser($(this).attr('href'));
 	});
 });
