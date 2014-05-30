@@ -117,7 +117,7 @@ function getNews() {
 			if(i%per_page==0 && i!=0){
 				out = out + '</ul></div><div class="news"><ul data-ajax="false" data-inset="true">';
 			}
-			out = out + '<li><a href="' +item.link+ '" data-ajax="false"><h6>' + item.title + '</h6><span>' +convertDate(item.date)+ '</span></a></li>';
+			out = out + '<li><a href="' +item.link+ '" data-ajax="false"><h6>' + item.title + '</h6><span>' +item.date+ '</span></a></li>';
 		});
 		out = out + '</div>';
 		
