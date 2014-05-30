@@ -53,6 +53,11 @@ function sortByKey(array, key) {
         return ((x < y) ? -1 : ((x > y) ? 1 : 0));
     });
 };
+
+function initNews() {
+	alert(1);
+};
+
 function renderWarsztat(id){
 	$.each(use_warsztaty,function(i,item){
 		if(i==id){
@@ -399,6 +404,9 @@ function showPoint(lat,lng){
 }
 $(document).on('pageshow pagechange',function(){
 	$(".ui-page-active [data-role=header]").fixedtoolbar({updatePagePadding:true});
+});
+$(document).on('pageshow','#page1',function(){
+	initNews();
 });
 $(document).on('pageshow','#page3',function(){
 	if(typeof GoogleMap != 'undefined'){
