@@ -1,5 +1,4 @@
-var newsUrl = 'http://www.portel.pl/rss.php';
-//var newsUrl = 'http://www.q-service.com.pl/rss/';
+var newsUrl = 'http://www.q-service.com.pl/rss/';
 
 $.mobile.defaultPageTransition = 'none';
 
