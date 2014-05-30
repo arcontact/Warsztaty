@@ -506,7 +506,7 @@ $(document).ready(function(){
 	
 	$('[data-rel="external"]').on('click', function(e){
 		e.preventDefault();
-		
+		alert($(this).attr('href'));
 		openDeviceBrowser($(this).attr('href'));
 	});
 });
