@@ -72,7 +72,7 @@ function clickNews(news_index, jq){
     return false;
 };
 
-function convertDate(str) {
+function convertXMLDate(str) {
 	var data = new Date(str);
 	return data.toLocaleFormat('%d %b %Y');
 };
@@ -98,7 +98,7 @@ function getNews() {
 			$.each(items, function(i, v) {
 				entry = {
 					title: $(v).find("title").text(),
-					date: convertDate($(v).find("pubDate").text()),
+					date: convertXMLDate($(v).find("pubDate").text()),
 					link: $(v).find("link").text(),
 					description: $.trim($(v).find("description").text())
 				};
