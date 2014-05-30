@@ -72,11 +72,6 @@ function clickNews(news_index, jq){
     return false;
 };
 
-function convertXMLDate(str) {
-	var data = new Date(str);
-	return data.toLocaleFormat('%d %b %Y');
-};
-
 function getNews() {
 	var _news = [];
 	var ajaxNews = $.ajax({
@@ -96,9 +91,11 @@ function getNews() {
 			list_block.appendTo('#articles');
 			
 			$.each(items, function(i, v) {
+				var data = new Date($(v).find("pubDate").text());
+			
 				entry = {
 					title: $(v).find("title").text(),
-					date: convertXMLDate($(v).find("pubDate").text()),
+					date: data.toLocaleFormat('%d %b %Y'),
 					link: $(v).find("link").text(),
 					description: $.trim($(v).find("description").text())
 				};
