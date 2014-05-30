@@ -504,7 +504,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('[data-rel]').on('click', function(e){
+	$('[data-rel="external"]').on('click', function(e){
 		e.preventDefault();
 		
 		openDeviceBrowser($(this).attr('href'));
