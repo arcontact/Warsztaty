@@ -56,48 +56,80 @@ function sortByKey(array, key) {
     });
 };
 
-function initNews() {
-	var per_page = 20;
-	$('#articles').empty();
-	$('#articles').addClass('loading');
-	
-	$.get(newsUrl, {}, function(res, code) {
-		$('#articles').removeClass('loading');
-		
-		var xml = $(res);
-		var items = xml.find("item");
-		
-		var list_block = $('<ul/>');
-		list_block.appendTo('#articles');
-		
-		$.each(items, function(i, v) {
-			entry = {
-				title: $(v).find("title").text(),
-				link: $(v).find("link").text(),
-				description: $.trim($(v).find("description").text())
-			};
+function initNews(){
+    var new_content = $('#articles_hidden div.news:eq(0)').clone();
+    $('#articles').empty().addClass('loading');
+	$('#articles').append(new_content);
+	$('#page1').page();
+	$('#articles ul').listview();
+    return false;
+};
+
+function clickNews(news_index, jq){
+    var new_content = $('#articles_hidden div.news:eq('+(news_index-1)+')').clone();
+    $('#articles').empty().append(new_content);
+	$('#articles ul').listview();
+    return false;
+};
+
+function getNews() {
+	var _news = [];
+	var ajaxNews = $.ajax({
+		url: newsUrl,
+		type: "GET",
+		async: false,
+		cache: false
+	});
+	ajaxNews.done(function(res){
+		if(typeof res != 'undefined') {
+			$('#articles').removeClass('loading');
 			
-			var list_item = $('<li/>');
-			var list_item_link = $('</a>', { href: entry.link });
-			list_item_link.appendTo(list_item);
-			list_item.appendTo(list_block);
-			//entries.push(entry);
-			//console.log(entry);
-		});
-		$('#articles ul').listview();
+			var xml = $(res);
+			var items = xml.find("item");
+			
+			var list_block = $('<ul/>');
+			list_block.appendTo('#articles');
+			
+			$.each(items, function(i, v) {
+				entry = {
+					title: $(v).find("title").text(),
+					link: $(v).find("link").text(),
+					description: $.trim($(v).find("description").text())
+				};
+				_news.push(entry);
+			});
+		}
+	});
 		
+	var len = Object.keys(_news).length;
+	if( len > 0 ) {
+		$('#articles').empty();
+		var out = '<div class="news"><ul data-ajax="false" data-inset="true">';
+		var per_page = 20;
+
+		$.each(_news,function(i,item){
+			if(i%per_page==0 && i!=0){
+				out = out + '</ul></div><div class="news"><ul data-ajax="false" data-inset="true">';
+			}
+			out = out + '<li><a href="' +item.link+ '" data-ajax="false"><h6>' + item.title + '</h6></a></li>';
+		});
+		out = out + '</div>';
+		
+		$("#articles_hidden").html(out);
 		$('.articles_pagination').pagination('destroy').pagination({
-			items: items.length,
+			items: len,
 			itemsOnPage: per_page,
 			cssStyle: 'light-theme',
 			prevText: '<',
 			nextText: '>',
 			edges: 1,
 			displayedPages: 3,
-			onPageClick: pageClick,
+			onPageClick: clickNews,
 			onInit: initNews
 		});
-	});
+	} else {
+		window.plugins.toast.showLongCenter('Nie udało się wgrać listy aktualności. Włącz internet aby pobrać najnowszą listę.',function(a){},function(b){});
+	}
 };
 
 function renderWarsztat(id){
@@ -460,10 +492,12 @@ $(document).on('pageshow','#page3',function(){
 $(document).ready(function(){
 	checkVersion();
 	warsztatyLista(false);
+	getNews();
 	$(".refresh_connection").bind("click",function(){
 		if(navigator.onLine) {
 			checkVersion();
 			warsztatyLista(false);
+			getNews();
 		} else {
 			window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 		}
