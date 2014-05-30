@@ -62,7 +62,7 @@ function initNews() {
 		url: newsUrl
 	})
 	.done(function(out){
-		alert("Data: " + out);
+		$('#articles').html(out);
 	})
 	.error(function(xhr, err){
 		alert("Ajax error: " + err);
