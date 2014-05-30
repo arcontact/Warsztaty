@@ -1,4 +1,5 @@
-var newsUrl = 'http://www.q-service.com.pl/rss/';
+var newsUrl = 'http://www.portel.pl/rss.php';
+//var newsUrl = 'http://www.q-service.com.pl/rss/';
 
 $.mobile.defaultPageTransition = 'none';
 
@@ -106,13 +107,13 @@ function getNews() {
 	if( len > 0 ) {
 		$('#articles').empty();
 		var out = '<div class="news"><ul data-ajax="false" data-inset="true">';
-		var per_page = 20;
+		var per_page = 10;
 
 		$.each(_news,function(i,item){
 			if(i%per_page==0 && i!=0){
 				out = out + '</ul></div><div class="news"><ul data-ajax="false" data-inset="true">';
 			}
-			out = out + '<li><a href="' +item.link+ '" data-ajax="false" data-rel="external"><h6>' + item.title + '</h6><span>' +item.date+ '</span></a></li>';
+			out = out + '<li><a href="#" data-ajax="false" onclick="window.open('+item.link+', \'_blank\', \'location=yes\');"><h6>' + item.title + '</h6><span>' +item.date+ '</span></a></li>';
 		});
 		out = out + '</div>';
 		
@@ -502,11 +503,5 @@ $(document).ready(function(){
 		} else {
 			window.plugins.toast.showShortCenter('Brak połączenia z internetem.',function(a){},function(b){});
 		}
-	});
-	
-	$('[data-rel="external"]').on('click', function(e){
-		e.preventDefault();
-		alert($(this).attr('href'));
-		openDeviceBrowser($(this).attr('href'));
 	});
 });
