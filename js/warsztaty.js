@@ -61,7 +61,7 @@ function initNews() {
 };
 
 function failNews(err) {
-	alert(err.code);
+	alert('Blad: '+err.code);
 };
 
 function renderWarsztat(id){
