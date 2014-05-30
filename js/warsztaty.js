@@ -58,6 +58,7 @@ function sortByKey(array, key) {
 
 function initNews() {
 	var entries = [];
+	$('#articles').empty();
 	$('#articles').addClass('loading');
 	
 	$.get(newsUrl, {}, function(res, code) {
@@ -69,7 +70,7 @@ function initNews() {
 		var list_block = $('<ul/>');
 		list_block.appendTo('#articles');
 		
-		$.each(items, function(i, v) {		
+		$.each(items, function(i, v) {
 			entry = {
 				title: $(v).find("title").text(),
 				link: $(v).find("link").text(),
@@ -82,38 +83,8 @@ function initNews() {
 			//entries.push(entry);
 			//console.log(entry);
 		});
+		$('#articles ul').listview();
 	});
-};
-
-function gotFileEntry(fileEntry) {
-	fileEntry.file(gotFile, failNews);
-};
-
-function gotFile(file){
-	readDataUrl(file);
-	readAsText(file);
-};
-
-function readDataUrl(file) {
-	var reader = new FileReader();
-	reader.onloadend = function(evt) {
-		console.log("Read as data URL");
-		console.log(evt.target.result);
-	};
-	reader.readAsDataURL(file);
-};
-
-function readAsText(file) {
-	var reader = new FileReader();
-	reader.onloadend = function(evt) {
-		console.log("Read as text");
-		console.log(evt.target.result);
-	};
-	reader.readAsText(file);
-};
-
-function failNews(err) {
-	alert('Blad: '+err.code);
 };
 
 function renderWarsztat(id){
