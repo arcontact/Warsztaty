@@ -63,6 +63,7 @@ function initNews() {
 	})
 	.done(function(out){
 		$('#articles').html(out);
+		console.log(out);
 	})
 	.error(function(xhr, err){
 		alert("Ajax error: " + err);
