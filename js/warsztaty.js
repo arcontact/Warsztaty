@@ -4,8 +4,15 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 	if(navigator.onLine) {
-		$.get(newsUrl, function(response){
-			alert(response);
+		$.ajax({
+			type: 'GET',
+			url: newsUrl,
+			success: function(data){
+				alert(data);
+			},
+			error: function(xhr, type){
+				alert('Ajax error!')
+			}
 		});
 	}
 	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
