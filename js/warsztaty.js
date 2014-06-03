@@ -4,7 +4,7 @@ function onDeviceReady() {
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 function gotFS(fileSystem) {
-	var path = "readme.txt";
+	var path = "data.xml";
 	fileSystem.root.getFile(path, {create: true, exclusive: false}, gotFileEntry, fail);
 }
 function gotFileEntry(fileEntry) {
@@ -19,5 +19,5 @@ function gotFileWriter(writer) {
 }
 
 function fail(err) {
-	console.log(err);
+	alert(err);
 }
