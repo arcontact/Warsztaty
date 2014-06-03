@@ -16,8 +16,12 @@ function onDeviceReady() {
 	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSWrite, fail);
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs){
 		fs.root.getFile(fi_path, {create: false}, function(fe){
-			alert(fe);
-		}, function(err){ alert('-> '+err); });
+			fe.file(function(a){
+				alert(a);
+			}, function(b) {
+				alert('Error: '+b.code);
+			});
+		});
 	}, fail);
 }
 
