@@ -1,7 +1,6 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-	alert('READY');
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 function gotFS(fileSystem) {
@@ -17,4 +16,8 @@ function gotFileWriter(writer) {
 		console.log("write success");
 	};
 	writer.write("some sample text");
+}
+
+function fail(err) {
+	console.log(err);
 }
