@@ -15,7 +15,7 @@ function onDeviceReady() {
 			}
 		});*/
 		$.getJSON('http://arcontact.pl/warsztaty_inter_cars/feed.php?type=list', function(remoteData){
-			alert(remoteData);
+			alert('xxx');
 		});
 	}
 	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
