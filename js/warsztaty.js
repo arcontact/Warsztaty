@@ -18,7 +18,7 @@ function onDeviceReady() {
 		fs.root.getFile(fi_path, {create: false}, function(fe){
 			alert('FE: '+fe);
 		}, function(ee){
-			alert(ee);
+			alert('ERR: '+ee);
 		});
 	}, fail);
 }
