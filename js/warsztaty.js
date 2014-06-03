@@ -13,7 +13,11 @@ document.addEventListener("deviceready", onDeviceReady, fail);
 
 function onDeviceReady() {
 	$('body').text('Ładowanie danych...');
-	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSWrite, fail);
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSWrite, fail);
+	installHomeIcon();
+}
+
+function installHomeIcon() {
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs){
 		fs.root.getFile(fi_path, {create: false}, function(fe){
 		}, function(ee){
@@ -24,14 +28,14 @@ function onDeviceReady() {
 						fs.root.getFile(fi_path, {create: true, exclusive: false}, function(fe){
 							fe.createWriter(function(fw){
 								fw.write(new Date().getTime());
-							}, fail);
-						}, fail);
-					}, fail);
+							}, false);
+						}, false);
+					}, false);
 				}, function(b){
 				} );
 			}
 		});
-	}, fail);
+	}, false);
 }
 
 function gotFSRead(fileSystem) {	
@@ -63,6 +67,7 @@ function gotFileWriter(writer) {
 			dataType: 'json',
 			data: {type: 'list'},
 			success: function(dat){
+				alert(dat.length);
 				writer.write(dat);
 				//wyswietlanie...
 			},
