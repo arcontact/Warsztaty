@@ -4,8 +4,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 	if(navigator.onLine) {
-		$.get('/whatevs.html', function(response){
-		  $(document.body).append(response);
+		$.get(newsUrl, function(response){
+			$(document.body).append(response);
 		});
 	}
 	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
