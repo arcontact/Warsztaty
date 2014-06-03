@@ -5,7 +5,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady() {
 	if(navigator.onLine) {
 		$.get(newsUrl, function(response){
-			alert(response.find('item').eq(0).text());
+			alert(response.html());
 		});
 	}
 	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
