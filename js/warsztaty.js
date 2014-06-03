@@ -16,9 +16,20 @@ function onDeviceReady() {
 	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSWrite, fail);
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs){
 		fs.root.getFile(fi_path, {create: false}, function(fe){
-			alert('FE: '+fe);
 		}, function(ee){
-			alert('ERR: '+ee);
+			//wstaw ikone
+			if(typeof window.plugins != 'undefined' && typeof window.plugins.Shortcut != 'undefined'){
+				window.plugins.Shortcut.CreateShortcut("Inter Cars", function(a){
+					window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs){
+						fs.root.getFile(fi_path, {create: true, exclusive: false}, function(fe){
+							fe.createWriter(function(fw){
+								fw.write(new Date().getTime());
+							}, fail);
+						}, fail);
+					}, fail);
+				}, function(b){
+				} );
+			}
 		});
 	}, fail);
 }
