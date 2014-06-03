@@ -16,9 +16,9 @@ function onDeviceReady() {
 	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSWrite, fail);
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs){
 		fs.root.getFile(fi_path, {create: false}, function(fe){
-			console.log(fe);
+			alert(fe);
 		}, function(ee){
-			console.log(ee);
+			alert(ee);
 		});
 	}, fail);
 }
