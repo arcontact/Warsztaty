@@ -14,10 +14,10 @@ document.addEventListener("deviceready", onDeviceReady, fail);
 function onDeviceReady() {
 	$('body').text('Ładowanie danych...');
 	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSWrite, fail);
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(){
-		fileSystem.root.getFile(fi_path, {create: false}, false, function(){
-			alert('NIE MA PLIKU INSTALACJI');
-		});
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fs){
+		fs.root.getFile(fi_path, {create: false}, function(fe){
+			alert(fe);
+		}, function(err){ alert('-> '+err); });
 	}, fail);
 }
 
