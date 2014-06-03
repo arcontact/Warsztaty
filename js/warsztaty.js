@@ -1,21 +1,21 @@
 var newsUrl = 'http://www.q-service.com.pl/rss/';
+var dataUrl = 'http://arcontact.pl/warsztaty_inter_cars/feed.php';
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 	if(navigator.onLine) {
-		/*$.ajax({
+		$.ajax({
 			type: 'GET',
-			url: newsUrl,
+			url: dataUrl,
+			dataType: 'json',
+			data: {type: 'list'},
 			success: function(data){
-				alert(data.html());
+				alert(data);
 			},
 			error: function(xhr, type){
 				alert('Ajax error!')
 			}
-		});*/
-		$.getJSON('http://arcontact.pl/warsztaty_inter_cars/feed.php?type=list', function(remoteData){
-			alert('xxx');
 		});
 	}
 	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
