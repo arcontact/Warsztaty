@@ -13,7 +13,7 @@ function gotFileEntry(fileEntry) {
 
 function gotFileWriter(writer) {
 	writer.onwrite = function(evt) {
-		console.log("write success");
+		alert("write success");
 	};
 	writer.write("some sample text");
 }
