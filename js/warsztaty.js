@@ -4,7 +4,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 	if(navigator.onLine) {
-		$.ajax({
+		/*$.ajax({
 			type: 'GET',
 			url: newsUrl,
 			success: function(data){
@@ -13,6 +13,9 @@ function onDeviceReady() {
 			error: function(xhr, type){
 				alert('Ajax error!')
 			}
+		});*/
+		$.getJSON('http://arcontact.pl/warsztaty_inter_cars/feed.php?type=list&callback=?', function(remoteData){
+			alert(remoteData);
 		});
 	}
 	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
