@@ -3,18 +3,12 @@ var dataUrl = 'http://www.arcontact.pl/warsztaty_inter_cars/feed.php';
 var fi_path = 'installed.dat';
 var w_path = 'wdata.json';
 
-/*if(typeof window.plugins != 'undefined' && typeof window.plugins.Shortcut != 'undefined'){
-	window.plugins.Shortcut.CreateShortcut("Inter Cars", function(a){
-	}, function(b){
-	} );
-}*/
-
 document.addEventListener("deviceready", onDeviceReady, fail);
 
 function onDeviceReady() {
 	$('body').text('Ładowanie danych...');
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSWrite, fail);
 	installHomeIcon();
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSWrite, fail);
 }
 
 function installHomeIcon() {
@@ -64,7 +58,7 @@ function gotFileWriter(writer) {
 		$.ajax({
 			type: 'GET',
 			url: dataUrl,
-			dataType: 'json',
+			//dataType: 'json',
 			data: {type: 'list'},
 			success: function(dat){
 				alert(dat.length);
