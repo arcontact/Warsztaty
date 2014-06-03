@@ -12,6 +12,7 @@ function onDeviceReady() {
 			data: {type: 'list'},
 			success: function(dat){
 				alert(dat);
+				console.log(dat);
 			},
 			error: function(xhr, type){
 				alert('Ajax error!!!')
