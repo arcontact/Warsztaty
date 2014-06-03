@@ -14,7 +14,7 @@ function onDeviceReady() {
 				alert('Ajax error!')
 			}
 		});*/
-		$.getJSON('http://arcontact.pl/warsztaty_inter_cars/feed.php?type=list&callback=?', function(remoteData){
+		$.getJSON('http://arcontact.pl/warsztaty_inter_cars/feed.php?type=list', function(remoteData){
 			alert(remoteData);
 		});
 	}
