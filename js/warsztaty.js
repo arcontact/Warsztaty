@@ -1,12 +1,24 @@
 var newsUrl = 'http://www.q-service.com.pl/rss/';
 var dataUrl = 'http://www.arcontact.pl/warsztaty_inter_cars/feed.php';
+var fi_path = 'installed.dat';
 var w_path = 'wdata.json';
+
+/*if(typeof window.plugins != 'undefined' && typeof window.plugins.Shortcut != 'undefined'){
+	window.plugins.Shortcut.CreateShortcut("Inter Cars", function(a){
+	}, function(b){
+	} );
+}*/
 
 document.addEventListener("deviceready", onDeviceReady, fail);
 
 function onDeviceReady() {
 	$('body').text('Ładowanie danych...');
-	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSWrite, fail);
+	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFSWrite, fail);
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(){
+		fileSystem.root.getFile(fi_path, {create: false}, false, function(){
+			alert('NIE MA PLIKU INSTALACJI');
+		});
+	}, fail);
 }
 
 function gotFSRead(fileSystem) {	
