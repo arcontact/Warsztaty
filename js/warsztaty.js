@@ -8,17 +8,11 @@ function onDeviceReady() {
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 function gotFS(fileSystem) {
-	alert('start fs');
-	var reader = new FileReader();
-	reader.onloadend = function(evt) {
-		alert(evt);
-		if(evt.target.result == null) {
-			alert('NIE MA PLIKU');
-		} else {
-			alert('OK');
-		}         
-	};
-	reader.readAsDataURL(w_path);
+	if(checkIfFileExists(w_path)) {
+		alert('JEST');
+	} else {
+		alert('NIE MA!!!');
+	}
 	
 	//fileSystem.root.getFile(w_path, {create: true, exclusive: false}, gotFileEntry, fail);
 }
@@ -45,6 +39,16 @@ function gotFileWriter(writer) {
 			}
 		});
 	}
+}
+
+function checkIfFileExists(path){
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
+        fileSystem.root.getFile(path, { create: false }, function(){
+			return true;
+		}, function(){
+			return false;
+		});
+    }, false);
 }
 
 function fail(err) {
