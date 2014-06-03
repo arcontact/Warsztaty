@@ -8,7 +8,8 @@ function gotFS(fileSystem) {
 	fileSystem.root.getFile(path, {create: true, exclusive: false}, gotFileEntry, fail);
 }
 function gotFileEntry(fileEntry) {
-	fileEntry.createWriter(gotFileWriter, fail);
+	//fileEntry.createWriter(gotFileWriter, fail);
+	alert(fileEntry.fullPath);
 }
 
 function gotFileWriter(writer) {
