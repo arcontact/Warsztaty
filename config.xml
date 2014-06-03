@@ -3,17 +3,17 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.warsztatybeta"
-        version   = "1.0.1">
+        id        = "pl.warsztaty.beta"
+        version   = "1.0.5">
 
-    <name>Warsztaty Beta</name>
+    <name>Warsztaty Beta test</name>
 
     <description>
-        Inter Cars sieć warsztatów Q-Service, Perfect Service, Q-Service Premium.
+        Inter Cars test
     </description>
 
-	<author href="http://www.intercars.eu" email="sekretariat@intercars.eu">
-        Inter Cars S. A.
+	<author href="http://www.arcontact.pl" email="contact@arcontact.pl">
+        Tester
 	</author>
 
     <!--
