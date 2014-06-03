@@ -53,8 +53,8 @@ function gotFileWriter(writer) {
 function readFile(file) {
 	var reader = new FileReader();
 	reader.onloadend = function(evt) {
-		console.log("Read as text");
-		console.log(evt.target.result);
+		alert("Read as text");
+		alert(evt.target.result);
 	};
 	reader.readAsText(file);
 }
