@@ -17,10 +17,11 @@ function gotFileEntry(fileEntry) {
 function gotFileWriter(writer) {
 	writer.onwrite = function(evt) {
 		console.log(evt);
-		alert('OK');
+		$('body').text('Dane zostały załadowane.');
 	};
 	
 	if(navigator.onLine) {
+		$('body').text('Ładowanie danych...');
 		$.ajax({
 			type: 'GET',
 			url: dataUrl,
