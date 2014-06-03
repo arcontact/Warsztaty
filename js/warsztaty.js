@@ -1,8 +1,7 @@
 var newsUrl = 'http://www.q-service.com.pl/rss/';
-var dataUrl = 'http://arcontact.pl/warsztaty_inter_cars/feed.php';
+var dataUrl = 'http://www.arcontact.pl/warsztaty_inter_cars/feed.php';
 
-document.addEventListener("deviceready", onDeviceReady, false);
-alert('xx');
+document.addEventListener("deviceready", onDeviceReady, fail);
 
 function onDeviceReady() {
 	if(navigator.onLine) {
