@@ -1,9 +1,34 @@
 var newsUrl = 'http://www.q-service.com.pl/rss/';
 var dataUrl = 'http://www.arcontact.pl/warsztaty_inter_cars/feed.php';
+var w_path = 'wdata.json';
 
 document.addEventListener("deviceready", onDeviceReady, fail);
 
 function onDeviceReady() {
+	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+}
+function gotFS(fileSystem) {
+	var reader = new FileReader();
+	reader.onloadend = function(evt) {
+		if(evt.target.result == null) {
+			alert('NIE MA PLIKU');
+		} else {
+			alert('OK');
+		}         
+	};
+	reader.readAsDataURL(w_path);
+	
+	//fileSystem.root.getFile(w_path, {create: true, exclusive: false}, gotFileEntry, fail);
+}
+function gotFileEntry(fileEntry) {
+	fileEntry.createWriter(gotFileWriter, fail);
+}
+
+function gotFileWriter(writer) {
+	writer.onwrite = function(evt) {
+		alert("write success");
+	};
+	
 	if(navigator.onLine) {
 		$.ajax({
 			type: 'GET',
@@ -11,30 +36,13 @@ function onDeviceReady() {
 			dataType: 'json',
 			data: {type: 'list'},
 			success: function(dat){
-				alert(dat);
-				console.log(dat);
+				writer.write(dat);
 			},
 			error: function(xhr, type){
 				alert('Ajax error!!!')
 			}
 		});
 	}
-	//window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-}
-function gotFS(fileSystem) {
-	var path = "data.xml";
-	fileSystem.root.getFile(path, {create: true, exclusive: false}, gotFileEntry, fail);
-}
-function gotFileEntry(fileEntry) {
-	//fileEntry.createWriter(gotFileWriter, fail);
-	alert(fileEntry.fullPath);
-}
-
-function gotFileWriter(writer) {
-	writer.onwrite = function(evt) {
-		alert("write success");
-	};
-	writer.write("some sample text");
 }
 
 function fail(err) {
