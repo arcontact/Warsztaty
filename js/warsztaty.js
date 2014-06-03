@@ -8,7 +8,7 @@ function onDeviceReady() {
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 function gotFS(fileSystem) {
-	console.log('start fs');
+	alert('start fs');
 	var reader = new FileReader();
 	reader.onloadend = function(evt) {
 		console.log(evt);
@@ -19,7 +19,7 @@ function gotFS(fileSystem) {
 		}         
 	};
 	reader.readAsDataURL(w_path);
-	console.log(w_path);
+	alert(w_path);
 	
 	//fileSystem.root.getFile(w_path, {create: true, exclusive: false}, gotFileEntry, fail);
 }
