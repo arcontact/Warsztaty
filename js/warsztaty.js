@@ -4,8 +4,8 @@ $.mobile.defaultPageTransition = 'none';
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
+	console.log('READY');
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-
 }
 function gotFS(fileSystem) {
 	var path = "readme.txt";
