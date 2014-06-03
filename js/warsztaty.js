@@ -1,6 +1,7 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
+	if(navigator.On
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 function gotFS(fileSystem) {
