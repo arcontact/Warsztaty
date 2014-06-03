@@ -8,7 +8,7 @@ function onDeviceReady() {
 			type: 'GET',
 			url: newsUrl,
 			success: function(data){
-				alert(data);
+				alert(data.find('item').eq(0).text());
 			},
 			error: function(xhr, type){
 				alert('Ajax error!')
