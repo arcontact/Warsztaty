@@ -8,11 +8,7 @@ function onDeviceReady() {
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 }
 function gotFS(fileSystem) {
-	if(checkIfFileExists(w_path)) {
-		alert('JEST');
-	} else {
-		alert('NIE MA!!!');
-	}
+	checkIfFileExists(w_path);
 	
 	//fileSystem.root.getFile(w_path, {create: true, exclusive: false}, gotFileEntry, fail);
 }
@@ -44,9 +40,9 @@ function gotFileWriter(writer) {
 function checkIfFileExists(path){
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
         fileSystem.root.getFile(path, { create: false }, function(){
-			return true;
+			alert(1);
 		}, function(){
-			return false;
+			alert(0);
 		});
     }, false);
 }
