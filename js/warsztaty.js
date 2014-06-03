@@ -11,7 +11,7 @@ function gotFS(fileSystem) {
 	alert('start fs');
 	var reader = new FileReader();
 	reader.onloadend = function(evt) {
-		console.log(evt);
+		alert(evt);
 		if(evt.target.result == null) {
 			alert('NIE MA PLIKU');
 		} else {
@@ -19,7 +19,6 @@ function gotFS(fileSystem) {
 		}         
 	};
 	reader.readAsDataURL(w_path);
-	alert(w_path);
 	
 	//fileSystem.root.getFile(w_path, {create: true, exclusive: false}, gotFileEntry, fail);
 }
