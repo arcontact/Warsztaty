@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><rss xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0"><channel>
+<title>Inter Cars</title>
+<link>http://www.intercars.com.pl/</link>
+<description>Q-Service - Sieci Serwisowe</description>
+<language>pl</language>
+<docs>http://feedvalidator.org/docs/rss2.html</docs>
+<ttl>15</ttl>
+<image>
+<title>Inter Cars RSS</title>
+<url>http://www.q-service.com.pl/images/ic_rss.jpg</url>
+<link>http://www.q-service.com.pl</link>
+<ttl>360</ttl>
+<width>100</width>
+<height>100</height>
+</image>		
+
+<item>
+<title>Negatywna opinia o warsztacie w internecie</title>
+<link>http://www.q-service.com.pl/#ajax_str.php?id=48&amp;news=12483&amp;lang=PL</link>
+<guid isPermaLink="true">http://www.q-service.com.pl/#ajax_str.php?id=48&amp;news=12483&amp;lang=PL</guid>
+<category>Aktualności Q-Service i Perfect Service</category><description>Q-Service - Sieci Serwisowe</description>
+<pubDate>WED, 21 MAY 2014 00:00:00</pubDate>
+</item>
+<item>
+<title>Odpowiedzialność właściciela warsztatu za kradzież pojazdu pozostawionego do naprawy</title>
+<link>http://www.q-service.com.pl/#ajax_str.php?id=48&amp;news=12323&amp;lang=PL</link>
+<guid isPermaLink="true">http://www.q-service.com.pl/#ajax_str.php?id=48&amp;news=12323&amp;lang=PL</guid>
+<category>Aktualności Q-Service i Perfect Service</category><description>Q-Service - Sieci Serwisowe</description>
+<pubDate>TUE, 22 APR 2014 00:00:00</pubDate>
+</item>
+<item>
+<title>Bio Service - O projekcie</title>
+<link>http://www.q-service.com.pl/#ajax_str.php?id=48&amp;news=12290&amp;lang=PL</link>
+<guid isPermaLink="true">http://www.q-service.com.pl/#ajax_str.php?id=48&amp;news=12290&amp;lang=PL</guid>
+<category>Aktualności Q-Service i Perfect Service</category><description>Q-Service - Sieci Serwisowe</description>
+<pubDate>MON, 14 APR 2014 00:00:00</pubDate>
+</item>
+</channel></rss>
